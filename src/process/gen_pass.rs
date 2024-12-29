@@ -63,7 +63,7 @@ pub fn process_genpass(
 
     // todo: check the password strength
     let estimate = zxcvbn(&password, &[]);
-    println!("{}", estimate.score());
+    eprintln!("Password strength: {}", estimate.score());
 
     Ok(())
 }
