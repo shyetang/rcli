@@ -1,4 +1,4 @@
-use super::verify_input_file;
+use super::verify_file;
 use clap::Parser;
 use std::fmt;
 use std::str::FromStr;
@@ -9,7 +9,7 @@ pub enum OutputFormat {
 }
 #[derive(Debug, Parser)]
 pub struct CsvOpts {
-    #[arg(short,long,value_parser=verify_input_file)]
+    #[arg(short,long,value_parser=verify_file)]
     // 通过value_parser 我们可以预先处理我们的输入
     pub input: String,
 
