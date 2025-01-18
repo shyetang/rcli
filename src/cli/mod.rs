@@ -1,14 +1,15 @@
 mod base64;
 mod csv;
 mod genpass;
+mod http;
 mod text;
 
 use anyhow::Result;
 use std::path::{Path, PathBuf};
 
 pub use self::{
-    base64::Base64Format, base64::Base64SubCommand, csv::OutputFormat, text::TextSignFormat,
-    text::TextSubCommand,
+    base64::Base64Format, base64::Base64SubCommand, csv::OutputFormat, http::HttpSubCommand,
+    text::TextSignFormat, text::TextSubCommand,
 };
 
 use crate::cli::csv::CsvOpts;
@@ -31,6 +32,8 @@ pub enum SubCommand {
     Base64(Base64SubCommand),
     #[command(subcommand)]
     Text(TextSubCommand),
+    #[command(subcommand)]
+    Http(HttpSubCommand),
 }
 
 fn verify_file(filename: &str) -> Result<String, &'static str> {
